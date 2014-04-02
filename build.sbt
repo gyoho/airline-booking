@@ -1,13 +1,9 @@
-name := "airline-booking"
+import play.Project._
 
-version := "1.0-SNAPSHOT"
+name := "computer-database"
 
-libraryDependencies ++= Seq(
-  javaJdbc,
-  javaEbean,
-  cache
-)     
+version := "1.0"
 
-libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.18"
+libraryDependencies ++= Seq(javaJdbc, javaEbean)
 
-play.Project.playJavaSettings	
+playJavaSettings
