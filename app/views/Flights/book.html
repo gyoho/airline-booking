@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Book ' + hotel.name /}
+#{set title:'Book ' + flight.name /}
 #{set 'moreScripts'}
     <script src="@{'/public/javascripts/jquery-ui-1.7.2.custom.min.js'}" type="text/javascript" charset="utf-8"></script>
 #{/set}
@@ -7,29 +7,29 @@
     <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/ui-lightness/jquery-ui-1.7.2.custom.css'}" />
 #{/set}
 
-<h1>Book hotel</h1>
+<h1>Book flight</h1>
 
-#{form @confirmBooking(hotel.id)}
+#{form @confirmBooking(flight.id)}
     <p>
-        <strong>Name:</strong> ${hotel.name}
+        <strong>Name:</strong> ${flight.name}
     </p>
     <p>
-        <strong>Address:</strong> ${hotel.address}
+        <strong>Address:</strong> ${flight.address}
     </p>
     <p>
-        <strong>City:</strong> ${hotel.city}
+        <strong>City:</strong> ${flight.city}
     </p>
     <p>
-        <strong>State:</strong> ${hotel.state}
+        <strong>State:</strong> ${flight.state}
     </p>
     <p>
-        <strong>Zip:</strong> ${hotel.zip}
+        <strong>Zip:</strong> ${flight.zip}
     </p>
     <p>
-        <strong>Country:</strong> ${hotel.country}
+        <strong>Country:</strong> ${flight.country}
     </p>
     <p>
-        <strong>Nightly rate:</strong> ${hotel.price}
+        <strong>Nightly rate:</strong> ${flight.price}
     </p>
     #{field 'booking.checkinDate'}
         <p class="${field.errorClass}">
@@ -93,7 +93,7 @@
         #{/select}      
     </p>    
     <p class="buttons">
-        <input type="submit" value="Proceed"> <a href="@{show(hotel.id)}">Cancel</a>    
+        <input type="submit" value="Proceed"> <a href="@{show(flight.id)}">Cancel</a>    
     </p>
 #{/form}
 

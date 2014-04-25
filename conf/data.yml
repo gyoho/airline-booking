@@ -10,9 +10,9 @@ models.User(demo):
     password:   demo
     name:       Demo User
 
-# Hotels
+# Flights
 
-models.Hotel(h1):
+models.Flight(h1):
     price:      120
     name:       Marriott Courtyard
     address:    Tower Place, Buckhead
@@ -21,7 +21,7 @@ models.Hotel(h1):
     zip:        30305
     country:    USA
     
-models.Hotel(h2):
+models.Flight(h2):
     price:      180
     name:       Doubletree
     address:    Tower Place, Buckhead
@@ -30,43 +30,43 @@ models.Hotel(h2):
     zip:        30305
     country:    USA
 
-models.Hotel(h3):
+models.Flight(h3):
     price:      450
-    name:       W Hotel
+    name:       W Flight
     address:    Union Square, Manhattan
     city:       NY
     state:      NY
     zip:        10011
     country:    USA
     
-models.Hotel(h4):
+models.Flight(h4):
     price:      450
-    name:       W Hotel
+    name:       W Flight
     address:    Lexington Ave, Manhattan
     city:       NY
     state:      NY
     zip:        10011
     country:    USA
 
-models.Hotel(h5):
+models.Flight(h5):
     price:      250
-    name:       Hotel Rouge
+    name:       Flight Rouge
     address:    1315 16th Street NW
     city:       Washington
     state:      DC
     zip:        20036
     country:    USA        
     
-models.Hotel(h6):
+models.Flight(h6):
     price:      300
-    name:       70 Park Avenue Hotel
+    name:       70 Park Avenue Flight
     address:    70 Park Avenue
     city:       NY
     state:      NY
     zip:        10011
     country:    USA  
 
-models.Hotel(h7):
+models.Flight(h7):
     price:      300
     name:       Conrad Miami
     address:    1395 Brickell Ave
@@ -75,7 +75,7 @@ models.Hotel(h7):
     zip:        33131
     country:    USA  
     
-models.Hotel(h8):
+models.Flight(h8):
     price:      80
     name:       Sea Horse Inn
     address:    2106 N Clairemont Ave
@@ -84,7 +84,7 @@ models.Hotel(h8):
     zip:        54703
     country:    USA      
 
-models.Hotel(h9):
+models.Flight(h9):
     price:      90
     name:       Super 8 Eau Claire Campus Area
     address:    1151 W Macarthur Av
@@ -93,7 +93,7 @@ models.Hotel(h9):
     zip:        54703
     country:    USA
 
-models.Hotel(h10):
+models.Flight(h10):
     price:      160
     name:       Marriott Downtown
     address:    55 Fourth Street
@@ -102,7 +102,7 @@ models.Hotel(h10):
     zip:        94103
     country:    USA
 
-models.Hotel(h11):
+models.Flight(h11):
     price:      200
     name:       Hilton Diagonal Mar
     address:    Passeig del Taulat 262-264
@@ -111,7 +111,7 @@ models.Hotel(h11):
     zip:        08019
     country:    Spain
 
-models.Hotel(h12):
+models.Flight(h12):
     price:      210
     name:       Hilton Tel Aviv
     address:    Independence Park
@@ -120,7 +120,7 @@ models.Hotel(h12):
     zip:        63405
     country:    Israel
 
-models.Hotel(h13):
+models.Flight(h13):
     price:      240
     name:       InterContinental Tokyo Bay
     address:    Takeshiba Pier
@@ -129,16 +129,16 @@ models.Hotel(h13):
     zip:        105
     country:    Japan
 
-models.Hotel(h14):
+models.Flight(h14):
     price:      130
-    name:       Hotel Beaulac
+    name:       Flight Beaulac
     address:    Esplanade Léopold-Robert 2
     city:       Neuchatel
     state:      
     zip:        2000
     country:    Switzerland
 
-models.Hotel(h15):
+models.Flight(h15):
     price:      140
     name:       Conrad Treasury Place
     address:    William & George Streets
@@ -147,7 +147,7 @@ models.Hotel(h15):
     zip:        4001
     country:    Australia
 
-models.Hotel(h16):
+models.Flight(h16):
     price:      230
     name:       Ritz Carlton
     address:    1228 Sherbrooke St
@@ -156,7 +156,7 @@ models.Hotel(h16):
     zip:        H3G1H6
     country:    Canada
 
-models.Hotel(h17):
+models.Flight(h17):
     price:      460
     name:       Ritz Carlton
     address:    Peachtree Rd, Buckhead
@@ -165,7 +165,7 @@ models.Hotel(h17):
     zip:        30326
     country:    USA
 
-models.Hotel(h18):
+models.Flight(h18):
     price:      220
     name:       Swissotel
     address:    68 Market Street
@@ -174,7 +174,7 @@ models.Hotel(h18):
     zip:        2000
     country:    Australia
 
-models.Hotel(h19):
+models.Flight(h19):
     price:      250
     name:       Meliá White House
     address:    Albany Street
@@ -183,9 +183,9 @@ models.Hotel(h19):
     zip:        NW13UP
     country:    Great Britain
 
-models.Hotel(h10):
+models.Flight(h10):
     price:      210
-    name:       Hotel Allegro
+    name:       Flight Allegro
     address:    171 West Randolph Street
     city:       Chicago
     state:      IL

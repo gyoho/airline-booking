@@ -8,8 +8,11 @@ import java.util.*;
 
 import models.*;
 
-public class Hotels extends Application {
+public class Flights extends Application {
     
+    // Interception methods
+    // Invoked before for each action call of this controller class
+    // Verifying if a user is authenticated
     @Before
     static void checkUser() {
         if(connected() == null) {
@@ -26,47 +29,47 @@ public class Hotels extends Application {
     }
 
     public static void list(String search, Integer size, Integer page) {
-        List<Hotel> hotels = null;
+        List<Flight> flights = null;
         page = page != null ? page : 1;
         if(search.trim().length() == 0) {
-            hotels = Hotel.all().fetch(page, size);
+            flights = Flight.all().fetch(page, size);
         } else {
             search = search.toLowerCase();
-            hotels = Hotel.find("lower(name) like ? OR lower(city) like ?", "%"+search+"%", "%"+search+"%").fetch(page, size);
+            flights = Flight.find("lower(name) like ? OR lower(city) like ?", "%"+search+"%", "%"+search+"%").fetch(page, size);
         }
-        render(hotels, search, size, page);
+        render(flights, search, size, page);
     }
     
     public static void show(Long id) {
-        Hotel hotel = Hotel.findById(id);
-        render(hotel);
+        Flight flight = Flight.findById(id);
+        render(flight);
     }
     
     public static void book(Long id) {
-        Hotel hotel = Hotel.findById(id);
-        render(hotel);
+        Flight flight = Flight.findById(id);
+        render(flight);
     }
     
     public static void confirmBooking(Long id, Booking booking) {
-        Hotel hotel = Hotel.findById(id);
-        booking.hotel = hotel;
+        Flight flight = Flight.findById(id);
+        booking.flight = flight;
         booking.user = connected();
         validation.valid(booking);
         
         // Errors or revise
         if(validation.hasErrors() || params.get("revise") != null) {
-            render("@book", hotel, booking);
+            render("@book", flight, booking);
         }
         
         // Confirm
         if(params.get("confirm") != null) {
             booking.save();
-            flash.success("Thank you, %s, your confimation number for %s is %s", connected().name, hotel.name, booking.id);
+            flash.success("Thank you, %s, your confimation number for %s is %s", connected().name, flight.name, booking.id);
             index();
         }
         
         // Display booking
-        render(hotel, booking);
+        render(flight, booking);
     }
     
     public static void cancelBooking(Long id) {

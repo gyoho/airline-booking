@@ -1,11 +1,11 @@
 #{extends 'main.html' /}
 #{set title:'Search' /}
 
-<h1>Search Hotels</h1>
+<h1>Search Flights</h1>
 
 <p>
     <input type="text" id="search" size="30">
-    <input type="submit" id="submit" value="Find Hotels">
+    <input type="submit" id="submit" value="Find Flights">
 
     <br>
 
@@ -65,7 +65,7 @@
     
 </script>
 
-<h1>Current Hotel Bookings</h1>
+<h1>Current Flight Bookings</h1>
 
 #{ifnot bookings}
     <p>
@@ -88,9 +88,9 @@
        <tbody>
            #{list bookings, as:'booking'}
                <tr>
-                   <td>${booking.hotel.name}</td>
-                   <td>${booking.hotel.address}</td>
-                   <td>${booking.hotel.city}, ${booking.hotel.state}, ${booking.hotel.country}</td>
+                   <td>${booking.flight.name}</td>
+                   <td>${booking.flight.address}</td>
+                   <td>${booking.flight.city}, ${booking.flight.state}, ${booking.flight.country}</td>
                    <td>${booking.checkinDate.format('yyyy-MM-dd')}</td>
                    <td>${booking.checkoutDate.format('yyyy-MM-dd')}</td>
                    <td>${booking.id}</td>

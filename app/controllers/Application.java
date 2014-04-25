@@ -7,6 +7,9 @@ import models.*;
 
 public class Application extends Controller {
     
+    // Interception methods
+    // Invoked before for each action call of this controller class
+    // Check a user is already registered
     @Before
     static void addUser() {
         User user = connected();
@@ -30,7 +33,7 @@ public class Application extends Controller {
 
     public static void index() {
         if(connected() != null) {
-            Hotels.index();
+            Flights.index();
         }
         render();
     }
@@ -48,7 +51,7 @@ public class Application extends Controller {
         user.save();
         session.put("user", user.username);
         flash.success("Welcome, " + user.name);
-        Hotels.index();
+        Flights.index();
     }
     
     public static void login(String username, String password) {
@@ -56,9 +59,9 @@ public class Application extends Controller {
         if(user != null) {
             session.put("user", user.username);
             flash.success("Welcome, " + user.name);
-            Hotels.index();         
+            Flights.index();         
         }
-        // Oops
+        // If cannot find the user in db
         flash.put("username", username);
         flash.error("Login failed");
         index();

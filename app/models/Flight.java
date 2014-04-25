@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.math.*;
 
 @Entity
-public class Hotel extends Model {
+public class Flight extends Model {
     
     @Required
     @MaxSize(50)
@@ -38,7 +38,7 @@ public class Hotel extends Model {
     public BigDecimal price;
 
     public String toString() {
-        return "Hotel(" + name + "," + address + "," + city + "," + zip + ")";
+        return "Flight(" + name + "," + address + "," + city + "," + zip + ")";
     }
     
 }

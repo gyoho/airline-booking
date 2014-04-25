@@ -1,0 +1,35 @@
+#{if flights}
+    <table>
+        <thead>
+            <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Date</th>
+                <th width="8%">Price</th>
+                <th width="13%">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            #{list flights, as:'flight'}
+                <tr>
+                    <td>${flight.name}</td>
+                    <td>${flight.address}</td>
+                    <td>${flight.city}, ${flight.state}, ${flight.country}</td>
+                    <td>${flight.zip}</td>
+                    <td>
+                        <a href="@{show(flight.id)}">View Flight</a>
+                    </td>
+                </tr>
+            #{/list}
+        </tbody>
+    </table>
+    <p>
+        <a id="nextPage" href="${page+1}">More results</a>
+    </p>
+#{/if}
+
+#{else}
+    <p>
+        No more results
+    </p>
+#{/else}      

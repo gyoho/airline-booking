@@ -1,29 +1,29 @@
 #{extends 'main.html' /}
-#{set title:'Confirm ' + hotel.name + ' booking' /}
+#{set title:'Confirm ' + flight.name + ' booking' /}
 
-<h1>Confirm hotel booking</h1>
+<h1>Confirm flight booking</h1>
 
-#{form @confirmBooking(hotel.id)}
+#{form @confirmBooking(flight.id)}
     <p>
-        <strong>Name:</strong> ${hotel.name}
+        <strong>Name:</strong> ${flight.name}
     </p>
     <p>
-        <strong>Address:</strong> ${hotel.address}
+        <strong>Address:</strong> ${flight.address}
     </p>
     <p>
-        <strong>City:</strong> ${hotel.city}
+        <strong>City:</strong> ${flight.city}
     </p>
     <p>
-        <strong>State:</strong> ${hotel.state}
+        <strong>State:</strong> ${flight.state}
     </p>
     <p>
-        <strong>Zip:</strong> ${hotel.zip}
+        <strong>Zip:</strong> ${flight.zip}
     </p>
     <p>
-        <strong>Country:</strong> ${hotel.country}
+        <strong>Country:</strong> ${flight.country}
     </p>
     <p>
-        <strong>Nightly rate:</strong> ${hotel.price}
+        <strong>Nightly rate:</strong> ${flight.price}
     </p>
     <p>
         <strong>Beds:</strong> ${booking.beds}
@@ -49,6 +49,6 @@
     </p>
     
     <p class="buttons">
-        <input type="submit" value="Confirm" name="confirm"> <input type="submit" value="Revise" name="revise"> <a href="@{show(hotel.id)}">Cancel</a>    
+        <input type="submit" value="Confirm" name="confirm"> <input type="submit" value="Revise" name="revise"> <a href="@{show(flight.id)}">Cancel</a>    
     </p>
 #{/form}

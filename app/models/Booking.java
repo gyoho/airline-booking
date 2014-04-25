@@ -16,7 +16,7 @@ public class Booking extends Model {
     
     @Required
     @ManyToOne
-    public Hotel hotel;
+    public Flight flight;
     
     @Required
     @Temporal(TemporalType.DATE) 
@@ -39,28 +39,30 @@ public class Booking extends Model {
     public boolean smoking;
     public int beds;
 
-    public Booking(Hotel hotel, User user) {
-        this.hotel = hotel;
+    public Booking(Flight flight, User user) {
+        this.flight = flight;
         this.user = user;
     }
    
+    // Total amount of fare   
     public BigDecimal getTotal() {
-        return hotel.price.multiply( new BigDecimal( getNights() ) );
+        return flight.price.multiply( new BigDecimal( getNights() ) );
     }
 
+    // Total trip time of flight
     public int getNights() {
         return (int) ( checkoutDate.getTime() - checkinDate.getTime() ) / 1000 / 60 / 60 / 24;
     }
 
     public String getDescription() {
         DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
-        return hotel==null ? null : hotel.name + 
+        return flight==null ? null : flight.name + 
             ", " + df.format( checkinDate ) + 
             " to " + df.format( checkoutDate );
     }
 
     public String toString() {
-        return "Booking(" + user + ","+ hotel + ")";
+        return "Booking(" + user + ","+ flight + ")";
     }
 
 }

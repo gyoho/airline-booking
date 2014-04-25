@@ -8,6 +8,8 @@ import javax.persistence.*;
 @Table(name="Customer")
 public class User extends Model {
     
+    // username and password ave constraints
+    // Not allowing to use special characters
     @Required
     @MaxSize(15)
     @MinSize(4)
@@ -19,6 +21,7 @@ public class User extends Model {
     @MinSize(5)
     public String password;
     
+    // real name with less constraints than username
     @Required
     @MaxSize(100)
     public String name;
