@@ -1,110 +1,72 @@
 package controllers;
 
 import play.mvc.*;
-import play.data.*;
-import static play.data.Form.*;
-
-import views.html.*;
+import play.data.validation.*;
 
 import models.*;
 
-/**
- * Manage a database of computers
- */
 public class Application extends Controller {
     
-    /**
-     * This result directly redirect to application home.
-     */
-    public static Result GO_HOME = redirect(
-        routes.Application.list(0, "name", "asc", "")
-    );
-    
-    /**
-     * Handle default path requests, redirect to computers list
-     */
-    public static Result index() {
-        return GO_HOME;
+    @Before
+    static void addUser() {
+        User user = connected();
+        if(user != null) {
+            renderArgs.put("user", user);
+        }
     }
+    
+    static User connected() {
+        if(renderArgs.get("user") != null) {
+            return renderArgs.get("user", User.class);
+        }
+        String username = session.get("user");
+        if(username != null) {
+            return User.find("byUsername", username).first();
+        } 
+        return null;
+    }
+    
+    // ~~
 
-    /**
-     * Display the paginated list of computers.
-     *
-     * @param page Current page number (starts from 0)
-     * @param sortBy Column to be sorted
-     * @param order Sort order (either asc or desc)
-     * @param filter Filter applied on computer names
-     */
-    public static Result list(int page, String sortBy, String order, String filter) {
-        return ok(
-            list.render(
-                Computer.page(page, 10, sortBy, order, filter),
-                sortBy, order, filter
-            )
-        );
-    }
-    
-    /**
-     * Display the 'edit form' of a existing Computer.
-     *
-     * @param id Id of the computer to edit
-     */
-    public static Result edit(Long id) {
-        Form<Computer> computerForm = form(Computer.class).fill(
-            Computer.find.byId(id)
-        );
-        return ok(
-            editForm.render(id, computerForm)
-        );
-    }
-    
-    /**
-     * Handle the 'edit form' submission 
-     *
-     * @param id Id of the computer to edit
-     */
-    public static Result update(Long id) {
-        Form<Computer> computerForm = form(Computer.class).bindFromRequest();
-        if(computerForm.hasErrors()) {
-            return badRequest(editForm.render(id, computerForm));
+    public static void index() {
+        if(connected() != null) {
+            Hotels.index();
         }
-        computerForm.get().update(id);
-        flash("success", "Computer " + computerForm.get().name + " has been updated");
-        return GO_HOME;
+        render();
     }
     
-    /**
-     * Display the 'new computer form'.
-     */
-    public static Result create() {
-        Form<Computer> computerForm = form(Computer.class);
-        return ok(
-            createForm.render(computerForm)
-        );
+    public static void register() {
+        render();
     }
     
-    /**
-     * Handle the 'new computer form' submission 
-     */
-    public static Result save() {
-        Form<Computer> computerForm = form(Computer.class).bindFromRequest();
-        if(computerForm.hasErrors()) {
-            return badRequest(createForm.render(computerForm));
+    public static void saveUser(@Valid User user, String verifyPassword) {
+        validation.required(verifyPassword);
+        validation.equals(verifyPassword, user.password).message("Your password doesn't match");
+        if(validation.hasErrors()) {
+            render("@register", user, verifyPassword);
         }
-        computerForm.get().save();
-        flash("success", "Computer " + computerForm.get().name + " has been created");
-        return GO_HOME;
+        user.save();
+        session.put("user", user.username);
+        flash.success("Welcome, " + user.name);
+        Hotels.index();
     }
     
-    /**
-     * Handle computer deletion
-     */
-    public static Result delete(Long id) {
-        Computer.find.ref(id).delete();
-        flash("success", "Computer has been deleted");
-        return GO_HOME;
+    public static void login(String username, String password) {
+        User user = User.find("byUsernameAndPassword", username, password).first();
+        if(user != null) {
+            session.put("user", user.username);
+            flash.success("Welcome, " + user.name);
+            Hotels.index();         
+        }
+        // Oops
+        flash.put("username", username);
+        flash.error("Login failed");
+        index();
     }
     
+    public static void logout() {
+        session.clear();
+        index();
+    }
 
 }
-            
