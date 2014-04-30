@@ -42,11 +42,11 @@ a {
 
 /** Header **/
 
-/*#header {
+#header {
     height: 200px;
     position: relative;
     background: #ffffff url(../images/images.jpg) 200px 30px no-repeat;
-}*/
+}
 
 #header h1 {
     margin: 0;

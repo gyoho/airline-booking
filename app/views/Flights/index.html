@@ -4,7 +4,12 @@
 <h1>Search Flights</h1>
 
 <p>
-    <input type="text" id="search" size="30">
+    <label>From:</label>
+    <input type="text" id="dep_city" size="10">
+    <label>To:</label>
+    <input type="text" id="arrv_city" size="10">
+    <label>Departure Date:</label>
+    <input type="text" size="10" id="dep_date" value="${flight?.dep_date?.format('yyyy-MM-dd')}">
     <input type="submit" id="submit" value="Find Flights">
 
     <br>
@@ -17,13 +22,17 @@
     </select>
 </p>
 
+
 <div id="result">
 </div>
 
 <script type="text/javascript" charset="utf-8">
 
     // Rebuild state
-    $('#search').val(sessvars.search)    
+    sessvars.dep_city = $('#dep_city').val()
+    sessvars.arrv_city = $('#arrv_city').val()
+    sessvars.dep_date = $('#dep_date').val()
+
     if(sessvars.page == undefined) {
         sessvars.page = 1
     }
@@ -34,10 +43,12 @@
     
     // Search function
     var search = function() {
-        sessvars.search = $('#search').val()
+        sessvars.dep_city = $('#dep_city').val()
+        sessvars.arrv_city = $('#arrv_city').val()
+        sessvars.dep_date = $('#dep_date').val()
         sessvars.size = $('#size').val()
-        var listAction = #{jsAction @list(':search', ':size', ':page') /} 
-        $('#result').load(listAction({search: sessvars.search, size: sessvars.size, page: sessvars.page}), function() {
+        var listAction = #{jsAction @list(':dep_city', ':arrv_city', ':dep_date', ':size', ':page') /} 
+        $('#result').load(listAction({dep_city: sessvars.dep_city, arrv_city: sessvars.arrv_city, dep_date: sessvars.dep_date, size: sessvars.size, page: sessvars.page}), function() {
             $('#content').css('visibility', 'visible')
         })
     }
@@ -57,7 +68,7 @@
         search()        
     })
     
-    // Init
+    // Initial state
     if(sessvars.search != undefined) {
         $('#content').css('visibility', 'hidden')
         search()
@@ -65,6 +76,8 @@
     
 </script>
 
+
+<!-- Show all bookings made by the user so far  -->
 <h1>Current Flight Bookings</h1>
 
 #{ifnot bookings}
@@ -76,11 +89,12 @@
    <table>
        <thead>
            <tr>
-               <th>Name</th>
-               <th>Address</th>
-               <th>City, State</th>
-               <th>Check in</th>
-               <th>Check out</th>
+               <th>Flight No</th>
+               <th>Airline</th>
+               <th>Departure City</th>
+               <th>Arrival City</th>
+               <th>Departure Date</th>
+               <th>Arrival Date</th>
                <th>Confirmation number</th>
                <th>Action</th>
            </tr>
@@ -88,11 +102,14 @@
        <tbody>
            #{list bookings, as:'booking'}
                <tr>
-                   <td>${booking.flight.name}</td>
-                   <td>${booking.flight.address}</td>
-                   <td>${booking.flight.city}, ${booking.flight.state}, ${booking.flight.country}</td>
-                   <td>${booking.checkinDate.format('yyyy-MM-dd')}</td>
-                   <td>${booking.checkoutDate.format('yyyy-MM-dd')}</td>
+                   <td>${booking.flight.flight_no}</td>
+                   <td>${booking.flight.airline}</td>
+                   <td>${booking.flight.dep_city}</td>
+                   <td>${booking.flight.arrv_city}</td>
+
+                   <!-- TODO: add time format -->
+                   <td>${booking.dep_date.format('yyyy-MM-dd')}, {booking.dep_time.format('')}</td>
+                   <td>${booking.arrv_date.format('yyyy-MM-dd')}, {booking.arrv_time.format('')}</td>
                    <td>${booking.id}</td>
                    <td>
                         #{a @cancelBooking(booking.id)}Cancel#{/a}

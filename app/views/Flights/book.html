@@ -11,51 +11,29 @@
 
 #{form @confirmBooking(flight.id)}
     <p>
-        <strong>Name:</strong> ${flight.name}
+        <strong>Flight#:</strong> ${flight.flight_no}
     </p>
     <p>
-        <strong>Address:</strong> ${flight.address}
+        <strong>Airline:</strong> ${flight.airline}
     </p>
     <p>
-        <strong>City:</strong> ${flight.city}
+        <strong>Departure City:</strong> ${flight.dep_city}
     </p>
     <p>
-        <strong>State:</strong> ${flight.state}
+        <strong>Arrival City:</strong> ${flight.arrv_city}
     </p>
     <p>
-        <strong>Zip:</strong> ${flight.zip}
+        <strong>Departure time:</strong> ${flight.dep_date}
     </p>
     <p>
-        <strong>Country:</strong> ${flight.country}
+        <strong>Arrival time:</strong> ${flight.arrv_date}
     </p>
     <p>
-        <strong>Nightly rate:</strong> ${flight.price}
+        <strong>Price:</strong> ${flight.price}
     </p>
-    #{field 'booking.checkinDate'}
-        <p class="${field.errorClass}">
-            <strong>Check In Date:</strong> <input type="text" size="10" name="${field.name}" class="datepicker" value="${booking?.checkinDate?.format('yyyy-MM-dd')}"> *
-            <span class="error">${field.error}</span>
-        </p>
-    #{/field}
-    #{field 'booking.checkoutDate'}
-        <p class="${field.errorClass}">
-            <strong>Check Out Date:</strong> <input type="text" size="10" name="${field.name}" class="datepicker" value="${booking?.checkoutDate?.format('yyyy-MM-dd')}"> *
-            <span class="error">${field.error}</span>
-        </p>
-    #{/field}
-    <p>
-        <strong>Room preference:</strong> 
-        #{select 'booking.beds', value:booking?.beds}
-            #{option 1}One king-size bed#{/option}
-            #{option 2}Two double beds#{/option}
-            #{option 3}Three beds#{/option}
-        #{/select}
-    </p>
-    <p>
-        <strong>Smoking preference:</strong> 
-        <input type="radio" name="booking.smoking" value="true" ${booking?.smoking ? 'checked' : ''}> Smoking
-        <input type="radio" name="booking.smoking" value="false" ${booking?.smoking ? '' : 'checked'}> Non smoking
-    </p>
+    
+
+   
     #{field 'booking.creditCard'}
         <p class="${field.errorClass}">
             <strong>Credit Card #:</strong> <input type="text" name="${field.name}" size="16" value="${booking?.creditCard}"> *

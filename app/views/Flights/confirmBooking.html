@@ -4,42 +4,28 @@
 <h1>Confirm flight booking</h1>
 
 #{form @confirmBooking(flight.id)}
-    <p>
-        <strong>Name:</strong> ${flight.name}
+     <p>
+        <strong>Flight#:</strong> ${flight.flight_no}
     </p>
     <p>
-        <strong>Address:</strong> ${flight.address}
+        <strong>Airline:</strong> ${flight.airline}
     </p>
     <p>
-        <strong>City:</strong> ${flight.city}
+        <strong>Departure City:</strong> ${flight.dep_city}
     </p>
     <p>
-        <strong>State:</strong> ${flight.state}
+        <strong>Arrival City:</strong> ${flight.arrv_city}
     </p>
     <p>
-        <strong>Zip:</strong> ${flight.zip}
+        <strong>Departure Time:</strong> ${flight.dep_date}
     </p>
     <p>
-        <strong>Country:</strong> ${flight.country}
+        <strong>Arrival Time:</strong> ${flight.arrv_date}
     </p>
     <p>
-        <strong>Nightly rate:</strong> ${flight.price}
+        <strong>Price:</strong> ${flight.price}
     </p>
-    <p>
-        <strong>Beds:</strong> ${booking.beds}
-        <input type="hidden" name="booking.beds" value="${booking.beds}">
-    </p>
-    <p>
-        <strong>Total:</strong> ${booking.total.formatCurrency('USD')}
-    </p>
-    <p>
-        <strong>Check in date:</strong> ${booking.checkinDate.format('yyyy-MM-dd')}
-        <input type="hidden" name="booking.checkinDate" value="${booking.checkinDate.format('yyyy-MM-dd')}">
-    </p>
-    <p>
-        <strong>Check out date:</strong> ${booking.checkoutDate.format('yyyy-MM-dd')}
-        <input type="hidden" name="booking.checkoutDate" value="${booking.checkoutDate.format('yyyy-MM-dd')}">
-    </p>
+    
     <p>
         <strong>Credit card #:</strong> ${booking.creditCard}
         <input type="hidden" name="booking.creditCard" value="${booking.creditCard}">

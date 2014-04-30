@@ -2,9 +2,12 @@
     <table>
         <thead>
             <tr>
+                <th>Price</th>
+                <th>Airline</th>
                 <th>From</th>
                 <th>To</th>
-                <th>Date</th>
+                <th>Departure</th>
+                <th>Arrival</th>
                 <th width="8%">Price</th>
                 <th width="13%">Action</th>
             </tr>
@@ -12,10 +15,12 @@
         <tbody>
             #{list flights, as:'flight'}
                 <tr>
-                    <td>${flight.name}</td>
-                    <td>${flight.address}</td>
-                    <td>${flight.city}, ${flight.state}, ${flight.country}</td>
-                    <td>${flight.zip}</td>
+                    <td>${flight.price}</td>
+                    <td>${flight.airline}</td>
+                    <td>${flight.dep_city}</td>
+                    <td>${flight.arrv_city}</td>
+                    <td>${flight.dep_date}, ${flight.dep_time}</td>
+                    <td>${flight.arrv_date}, ${flight.arrv_time}</td>
                     <td>
                         <a href="@{show(flight.id)}">View Flight</a>
                     </td>

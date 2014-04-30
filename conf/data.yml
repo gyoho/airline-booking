@@ -1,193 +1,59 @@
 # Users
 
-models.User(gavin):
-    username:   guillaume
-    password:   foobar
-    name:       Guillaume Bort
-    
+models.User(admin):
+    username:   admin
+    password:   admin
+    name:       admin
+
 models.User(demo):
     username:   demo
     password:   demo
     name:       Demo User
 
+
 # Flights
 
 models.Flight(h1):
-    price:      120
-    name:       Marriott Courtyard
-    address:    Tower Place, Buckhead
-    city:       Atlanta
-    state:      GA
-    zip:        30305
-    country:    USA
-    
+    price:      250
+    flight_no:  ex750d
+    airline:    Alaska
+    dep_city:   sjc
+    arrv_city:  sfo
+    dep_time:   04:40AM
+    arrv_time:  05:50AM
+
 models.Flight(h2):
-    price:      180
-    name:       Doubletree
-    address:    Tower Place, Buckhead
-    city:       Atlanta
-    state:      GA
-    zip:        30305
-    country:    USA
+    price:      230
+    flight_no:  rd750u
+    airline:    Southwest
+    dep_city:   sfo
+    arrv_city:  jfk
+    dep_time:   07:20AM
+    arrv_time:  12:50PM
 
 models.Flight(h3):
-    price:      450
-    name:       W Flight
-    address:    Union Square, Manhattan
-    city:       NY
-    state:      NY
-    zip:        10011
-    country:    USA
-    
+    price:      850
+    flight_no:  sud40f
+    airline:    United
+    dep_city:   dux
+    arrv_city:  jfk
+    dep_time:   09:15AM
+    arrv_time:  11:50PM
+
 models.Flight(h4):
-    price:      450
-    name:       W Flight
-    address:    Lexington Ave, Manhattan
-    city:       NY
-    state:      NY
-    zip:        10011
-    country:    USA
+    price:      340
+    flight_no:  rsf78k
+    airline:    Jetblue
+    dep_city:   jfk
+    arrv_city:  sjc
+    dep_time:   11:50AM
+    arrv_time:  03:50PM
 
 models.Flight(h5):
-    price:      250
-    name:       Flight Rouge
-    address:    1315 16th Street NW
-    city:       Washington
-    state:      DC
-    zip:        20036
-    country:    USA        
-    
-models.Flight(h6):
-    price:      300
-    name:       70 Park Avenue Flight
-    address:    70 Park Avenue
-    city:       NY
-    state:      NY
-    zip:        10011
-    country:    USA  
-
-models.Flight(h7):
-    price:      300
-    name:       Conrad Miami
-    address:    1395 Brickell Ave
-    city:       Miami
-    state:      FL
-    zip:        33131
-    country:    USA  
-    
-models.Flight(h8):
-    price:      80
-    name:       Sea Horse Inn
-    address:    2106 N Clairemont Ave
-    city:       Eau Claire
-    state:      WI
-    zip:        54703
-    country:    USA      
-
-models.Flight(h9):
-    price:      90
-    name:       Super 8 Eau Claire Campus Area
-    address:    1151 W Macarthur Av
-    city:       Eau Claire
-    state:      WI
-    zip:        54703
-    country:    USA
-
-models.Flight(h10):
-    price:      160
-    name:       Marriott Downtown
-    address:    55 Fourth Street
-    city:       San Francisco
-    state:      CA
-    zip:        94103
-    country:    USA
-
-models.Flight(h11):
-    price:      200
-    name:       Hilton Diagonal Mar
-    address:    Passeig del Taulat 262-264
-    city:       Barcelona
-    state:      Catalunya
-    zip:        08019
-    country:    Spain
-
-models.Flight(h12):
-    price:      210
-    name:       Hilton Tel Aviv
-    address:    Independence Park
-    city:       Tel Aviv
-    state:      
-    zip:        63405
-    country:    Israel
-
-models.Flight(h13):
-    price:      240
-    name:       InterContinental Tokyo Bay
-    address:    Takeshiba Pier
-    city:       Tokyo
-    state:      
-    zip:        105
-    country:    Japan
-
-models.Flight(h14):
-    price:      130
-    name:       Flight Beaulac
-    address:    Esplanade Léopold-Robert 2
-    city:       Neuchatel
-    state:      
-    zip:        2000
-    country:    Switzerland
-
-models.Flight(h15):
-    price:      140
-    name:       Conrad Treasury Place
-    address:    William & George Streets
-    city:       Brisbane
-    state:      QLD
-    zip:        4001
-    country:    Australia
-
-models.Flight(h16):
-    price:      230
-    name:       Ritz Carlton
-    address:    1228 Sherbrooke St
-    city:       West Montreal
-    state:      Quebec
-    zip:        H3G1H6
-    country:    Canada
-
-models.Flight(h17):
-    price:      460
-    name:       Ritz Carlton
-    address:    Peachtree Rd, Buckhead
-    city:       Atlanta
-    state:      GA
-    zip:        30326
-    country:    USA
-
-models.Flight(h18):
-    price:      220
-    name:       Swissotel
-    address:    68 Market Street
-    city:       Sydney
-    state:      NSW
-    zip:        2000
-    country:    Australia
-
-models.Flight(h19):
-    price:      250
-    name:       Meliá White House
-    address:    Albany Street
-    city:       Regents Park London
-    state:      
-    zip:        NW13UP
-    country:    Great Britain
-
-models.Flight(h10):
-    price:      210
-    name:       Flight Allegro
-    address:    171 West Randolph Street
-    city:       Chicago
-    state:      IL
-    zip:        60601
-    country:    USA       
+    price:      650
+    flight_no:  rdf50u
+    airline:    airtran
+    dep_city:   bux
+    arrv_city:  sjc
+    dep_time:   02:20AM
+    arrv_time:  05:50AM

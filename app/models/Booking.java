@@ -18,14 +18,6 @@ public class Booking extends Model {
     @ManyToOne
     public Flight flight;
     
-    @Required
-    @Temporal(TemporalType.DATE) 
-    public Date checkinDate;
-    
-    @Required
-    @Temporal(TemporalType.DATE)
-    public Date checkoutDate;
-    
     @Required(message="Credit card number is required")
     @Match(value="^\\d{16}$", message="Credit card number must be numeric and 16 digits long")
     public String creditCard;
@@ -36,8 +28,6 @@ public class Booking extends Model {
     public String creditCardName;
     public int creditCardExpiryMonth;
     public int creditCardExpiryYear;
-    public boolean smoking;
-    public int beds;
 
     public Booking(Flight flight, User user) {
         this.flight = flight;
@@ -45,21 +35,16 @@ public class Booking extends Model {
     }
    
     // Total amount of fare   
-    public BigDecimal getTotal() {
-        return flight.price.multiply( new BigDecimal( getNights() ) );
-    }
+    // public BigDecimal getFare() {
+    //    If more than one flight
+    //     return flight.price + flight.price
+    // }
 
-    // Total trip time of flight
-    public int getNights() {
-        return (int) ( checkoutDate.getTime() - checkinDate.getTime() ) / 1000 / 60 / 60 / 24;
-    }
+    // Total trip time
+    // public int getTripTime() {
+    //     return (int) ( arrv_date.getTime() - dep_date.getTime() ) / 1000 / 60 / 60 / 24;
+    // }
 
-    public String getDescription() {
-        DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
-        return flight==null ? null : flight.name + 
-            ", " + df.format( checkinDate ) + 
-            " to " + df.format( checkoutDate );
-    }
 
     public String toString() {
         return "Booking(" + user + ","+ flight + ")";

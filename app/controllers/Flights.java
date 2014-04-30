@@ -28,16 +28,22 @@ public class Flights extends Application {
         render(bookings);
     }
 
-    public static void list(String search, Integer size, Integer page) {
+    /***TODO: Implement dep_date***/
+
+    public static void list(String dep_city, String arrv_city, Date dep_date, Integer size, Integer page) {
         List<Flight> flights = null;
         page = page != null ? page : 1;
-        if(search.trim().length() == 0) {
-            flights = Flight.all().fetch(page, size);
+        if(dep_city.trim().length() == 0 || arrv_city.trim().length() == 0
+            /* || dep_date == null*/) {
+            // Warning please provide all info
         } else {
-            search = search.toLowerCase();
-            flights = Flight.find("lower(name) like ? OR lower(city) like ?", "%"+search+"%", "%"+search+"%").fetch(page, size);
+            dep_city = dep_city.toLowerCase();
+            arrv_city = arrv_city.toLowerCase();
+            /*dep_date = some java util methods*/
+            flights = Flight.find("lower(dep_city) like ? AND lower(arrv_city) like ?" /*AND dep_date*/,
+             "%"+dep_city+"%", "%"+arrv_city+"%", /*dep_date*/).fetch(page, size);
         }
-        render(flights, search, size, page);
+        render(flights, dep_city, arrv_city,/* dep_date,*/ size, page);
     }
     
     public static void show(Long id) {
@@ -64,7 +70,7 @@ public class Flights extends Application {
         // Confirm
         if(params.get("confirm") != null) {
             booking.save();
-            flash.success("Thank you, %s, your confimation number for %s is %s", connected().name, flight.name, booking.id);
+            flash.success("Thank you, %s, your confimation number for %s is %s", connected().name, flight.flight_no, booking.id);
             index();
         }
         
