@@ -35,6 +35,11 @@ public class Application extends Controller {
         if(connected() != null) {
             Flights.index();
         }
+        /*Check if he/she is admin, if so render admin page*/
+        // if(admin == true) {
+        //     Flights.admin.html.render()
+        // }
+
         render();
     }
     
@@ -48,6 +53,8 @@ public class Application extends Controller {
         if(validation.hasErrors()) {
             render("@register", user, verifyPassword);
         }
+        // Set the user to non admin
+        user.admin = false;
         user.save();
         session.put("user", user.username);
         flash.success("Welcome, " + user.name);

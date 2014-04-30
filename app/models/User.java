@@ -36,4 +36,5 @@ public class User extends Model {
         return "User(" + username + ")";
     }
     
+    public boolean admin = false;
 }
