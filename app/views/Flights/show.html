@@ -1,11 +1,11 @@
 #{extends 'main.html' /}
-#{set title:flight.name /}
+#{set title:'View page' /}
 
 <h1>View flight</h1>
 
 #{form @book(flight.id)}
     <p>
-        <strong>Price:</strong> ${flight.price}
+        <strong>Price:</strong> $${flight.price}
     </p>
     <p>
         <strong>Airline:</strong> ${flight.airline}
@@ -20,13 +20,16 @@
         <strong>Departure Date:</strong> ${flight.dep_date}
     </p>
     <p>
-        <strong>Arrival Date:</strong> ${flight.arv_date}
+        <strong>Departure Time:</strong> ${flight.dep_time}
+    </p>
+    <p>
+        <strong>Arrival Date:</strong> ${flight.arrv_date}
+    </p>
+    <p>
+        <strong>Arrival Time:</strong> ${flight.arrv_time}
     </p>
 
     <!-- TODO: Get flight duration -->
-    <!-- <p>
-        <strong>Flight Duration:</strong> ${flight.}
-    </p> -->
     
     <p class="buttons">
         <input type="submit" value="Book Flight"> <a href="@{index()}">Back to search</a>      

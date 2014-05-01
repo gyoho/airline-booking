@@ -26,6 +26,8 @@ public class Flight extends Model {
     @MaxSize(10)
     public String arrv_city;
     
+    // TemporalType.DATE: Map as java.sql.Date
+
     @Required
     @Temporal(TemporalType.DATE)
     public Date dep_date;
@@ -38,12 +40,10 @@ public class Flight extends Model {
    /*java.util DATE, TIME*/
 
     @Required
-    @Temporal(TemporalType.TIME)
-    public Date dep_time;
+    public String dep_time;
 
     @Required
-    @Temporal(TemporalType.TIME)
-    public Date arrv_time;
+    public String arrv_time;
     
     
     @Column(precision=6, scale=2)

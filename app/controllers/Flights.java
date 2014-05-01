@@ -73,7 +73,7 @@ public class Flights extends Application {
         // Confirm
         if(params.get("confirm") != null) {
             booking.save();
-            flash.success("Thank you, %s, your confimation number for %s is %s", connected().name, flight.flight_no, booking.id);
+            flash.success("Thank you, %s! your confimation number for the flight is %s", connected().name, booking.id);
             index();
         }
         

@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Book ' + flight.name /}
+#{set title:'Book' /}
 #{set 'moreScripts'}
     <script src="@{'/public/javascripts/jquery-ui-1.7.2.custom.min.js'}" type="text/javascript" charset="utf-8"></script>
 #{/set}
@@ -23,13 +23,19 @@
         <strong>Arrival City:</strong> ${flight.arrv_city}
     </p>
     <p>
-        <strong>Departure time:</strong> ${flight.dep_date}, ${flight.dep_time}
+        <strong>Departure Date:</strong> ${flight.dep_date}
     </p>
     <p>
-        <strong>Arrival time:</strong> ${flight.arrv_date}, ${flight.arrv_time}
+        <strong>Departure Time:</strong> ${flight.dep_time}
     </p>
     <p>
-        <strong>Price:</strong> ${flight.price}
+        <strong>Arrival Date:</strong> ${flight.arrv_date}
+    </p>
+    <p>
+        <strong>Arrival Time:</strong> ${flight.arrv_time}
+    </p>
+    <p>
+        <strong>Price:</strong> $${flight.price}
     </p>
     
 

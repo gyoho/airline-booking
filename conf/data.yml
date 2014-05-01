@@ -23,8 +23,8 @@ models.Flight(h1):
     arrv_city:  SFO
     dep_date:   2014-04-30
     arrv_date:  2014-04-30
-    dep_time:   04:30:00
-    arrv_time:  05:00:00
+    dep_time:   04:30
+    arrv_time:  05:00
 
 models.Flight(h2):
     price:      230
@@ -34,8 +34,8 @@ models.Flight(h2):
     arrv_city:  JFK
     dep_date:   2014-04-30
     arrv_date:  2014-04-30
-    dep_time:   07:20:00
-    arrv_time:  12:50:00
+    dep_time:   07:20
+    arrv_time:  12:50
 
 models.Flight(h3):
     price:      850
@@ -45,8 +45,8 @@ models.Flight(h3):
     arrv_city:  MIA
     dep_date:   2014-04-30
     arrv_date:  2014-04-30
-    dep_time:   01:15:00
-    arrv_time:  18:50:00
+    dep_time:   01:15
+    arrv_time:  18:50
 
 models.Flight(h4):
     price:      340
@@ -56,8 +56,8 @@ models.Flight(h4):
     arrv_city:  SJC
     dep_date:   2014-04-30
     arrv_date:  2014-04-30
-    dep_time:   11:50:00
-    arrv_time:  15:50:00
+    dep_time:   11:50
+    arrv_time:  15:50
 
 models.Flight(h5):
     price:      650
@@ -67,5 +67,5 @@ models.Flight(h5):
     arrv_city:  SJC
     dep_date:   2014-04-30
     arrv_date:  2014-04-30
-    dep_time:   14:20:00
-    arrv_time:  15:50:00
+    dep_time:   14:20
+    arrv_time:  15:50

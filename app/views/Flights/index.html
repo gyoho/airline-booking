@@ -9,7 +9,7 @@
     <label>To:</label>
     <input type="text" id="arrv_city" size="10">
     <label>Departure Date:</label>
-    <input type="text" size="10" id="dep_date" class="datepicker" value="${flight?.dep_date?.format('yyyy-MM-dd')}">
+    <input type="text" size="10" id="dep_date" class="datepicker">
     <input type="submit" id="submit" value="Find Flights">
 
     <br>
@@ -89,13 +89,13 @@
    <table>
        <thead>
            <tr>
-               <th>Flight No</th>
+               <th>Flight#</th>
                <th>Airline</th>
                <th>Departure City</th>
                <th>Arrival City</th>
                <th>Departure Date</th>
                <th>Arrival Date</th>
-               <th>Confirmation number</th>
+               <th>Confirmation#</th>
                <th>Action</th>
            </tr>
        </thead>
@@ -108,8 +108,8 @@
                    <td>${booking.flight.arrv_city}</td>
 
                    <!-- TODO: add time format -->
-                   <td>${booking.dep_date.format('yyyy-MM-dd')}, {booking.dep_time.format('')}</td>
-                   <td>${booking.arrv_date.format('yyyy-MM-dd')}, {booking.arrv_time.format('')}</td>
+                   <td>${booking.flight.dep_date.format('yyyy-MM-dd')}, ${booking.flight.dep_time}</td>
+                   <td>${booking.flight.arrv_date.format('yyyy-MM-dd')}, ${booking.flight.arrv_time}</td>
                    <td>${booking.id}</td>
                    <td>
                         #{a @cancelBooking(booking.id)}Cancel#{/a}

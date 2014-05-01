@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Confirm ' + flight.name + ' booking' /}
+#{set title:'Confirmation' /}
 
 <h1>Confirm flight booking</h1>
 
@@ -17,13 +17,19 @@
         <strong>Arrival City:</strong> ${flight.arrv_city}
     </p>
     <p>
-        <strong>Departure Time:</strong> ${flight.dep_date}, ${flight.dep_time}
+        <strong>Departure Date:</strong> ${flight.dep_date}
     </p>
     <p>
-        <strong>Arrival Time:</strong> ${flight.arrv_date}, ${flight.arrv_time}
+        <strong>Departure Time:</strong> ${flight.dep_time}
     </p>
     <p>
-        <strong>Price:</strong> ${flight.price}
+        <strong>Arrival Date:</strong> ${flight.arrv_date}
+    </p>
+    <p>
+        <strong>Arrival Time:</strong> ${flight.arrv_time}
+    </p>
+    <p>
+        <strong>Price:</strong> $${flight.price}
     </p>
     
     <p>
