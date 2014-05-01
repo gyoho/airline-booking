@@ -9,7 +9,7 @@
     <label>To:</label>
     <input type="text" id="arrv_city" size="10">
     <label>Departure Date:</label>
-    <input type="text" size="10" id="dep_date" value="${flight?.dep_date?.format('yyyy-MM-dd')}">
+    <input type="text" size="10" id="dep_date" class="datepicker" value="${flight?.dep_date?.format('yyyy-MM-dd')}">
     <input type="submit" id="submit" value="Find Flights">
 
     <br>
@@ -119,3 +119,9 @@
        </tbody>
    </table> 
 #{/else}
+
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+    $(".datepicker").datepicker({dateFormat: 'yy-mm-dd'});
+  });
+</script>

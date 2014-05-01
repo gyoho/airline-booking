@@ -5,6 +5,7 @@ import play.mvc.*;
 import play.data.validation.*;
 
 import java.util.*;
+import java.text.*;
 
 import models.*;
 
@@ -33,23 +34,19 @@ public class Flights extends Application {
     public static void list(String dep_city, String arrv_city, Date dep_date, Integer size, Integer page) {
         List<Flight> flights = null;
         page = page != null ? page : 1;
-
-        /*dep_date should match the format yyyy-mm-dd, otherwise returns null*/
-        
         if(dep_city.trim().length() == 0 || arrv_city.trim().length() == 0 || dep_date == null) {
-            // render no more result indicating there is no match
-            render(flights, dep_city, arrv_city, dep_date, size, page);
+            // return no more result: indicating there is no match
         } else {
-            Calendar cal_dep_date = new GregorianCalendar();
-            cal_dep_date.setTime(dep_date);
-            cal_dep_date.toString();
             dep_city = dep_city.toLowerCase();
             arrv_city = arrv_city.toLowerCase();
+            // System.out.println(dep_date);
+
+            // flights = Flight.find("dep_date like ?", "2014-04-30").fetch(page, size);
+
             flights = Flight.find("lower(dep_city) like ? AND lower(arrv_city) like ? AND dep_date like ?",
-             "%"+dep_city+"%", "%"+arrv_city+"%", cal_dep_date).fetch(page, size);
-            // flights = Flight.find("dep_city like ?", "%SFO%").fetch();
-            render(flights, dep_city, arrv_city, dep_date, size, page);
+             "%"+dep_city+"%", "%"+arrv_city+"%", dep_date).fetch(page, size);
         }
+        render(flights, dep_city, arrv_city, dep_date, size, page);
     }
     
     public static void show(Long id) {
