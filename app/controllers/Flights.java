@@ -23,6 +23,10 @@ public class Flights extends Application {
     }
     
     // ~~~
+
+    public static void admin() {
+        render();
+    }
     
     public static void index() {
         List<Booking> bookings = Booking.find("byUser", connected()).fetch();
@@ -37,14 +41,25 @@ public class Flights extends Application {
         if(dep_city.trim().length() == 0 || arrv_city.trim().length() == 0 || dep_date == null) {
             // return no more result: indicating there is no match
         } else {
+
+            // Direct flight
             dep_city = dep_city.toLowerCase();
             arrv_city = arrv_city.toLowerCase();
-            // System.out.println(dep_date);
 
-            // flights = Flight.find("dep_date like ?", "2014-04-30").fetch(page, size);
-
-            flights = Flight.find("lower(dep_city) like ? AND lower(arrv_city) like ? AND dep_date like ?",
+            // Query statement
+            flights = Flight.find("lower(dep_city) like ? AND lower(arrv_city) like ? AND dep_date like ? AND seats>0",
              "%"+dep_city+"%", "%"+arrv_city+"%", dep_date).fetch(page, size);
+
+            // If cannot find direct flight, find transfer
+            /*if (flights == null){
+                List<Flight> dep_flights = null;
+                List<Flight> arrv_flights = null;
+                dep_flights = Flight.find("lower(dep_city) like ? AND dep_date like ? AND seats>0",
+                 "%"+dep_city+"%", dep_date).fetch(page, size);      
+
+                arrv_flights = Flight.find("lower(arrv_city) like ? AND dep_date like ? AND seats>0 AND dep_city = dep_flights.arrv_city",
+                 "%"+arrv_city+"%", dep_date).fetch(page, size);          
+            }*/
         }
         render(flights, dep_city, arrv_city, dep_date, size, page);
     }
@@ -72,6 +87,8 @@ public class Flights extends Application {
         
         // Confirm
         if(params.get("confirm") != null) {
+            flight.seats --;
+            flight.save();
             booking.save();
             flash.success("Thank you, %s! your confimation number for the flight is %s", connected().name, booking.id);
             index();
@@ -83,6 +100,8 @@ public class Flights extends Application {
     
     public static void cancelBooking(Long id) {
         Booking booking = Booking.findById(id);
+        booking.flight.seats ++;
+        booking.flight.save();
         booking.delete();
         flash.success("Booking cancelled for confirmation number %s", booking.id);
         index();
@@ -106,14 +125,51 @@ public class Flights extends Application {
         index();
     }
 
+   
+    // Function for scheduling new flight
+    public static void newFlight(@Valid Flight flight) {
+        if(validation.hasErrors()) {
+            render("@admin", flight);
+        }
+        flight.save();
+        flash.success("Successfully scheduled flight# " + flight.flight_no);
+        admin();
+    }
+
     // Show all flights with link to modify it
-    /*public static void adminList() {
-        List<Flight> flights = null;
-        flights = Flight.findAll().fetch(page, size);
-        Integer page = 1;
-        Integer size = 10;
-        list.html.render(flights, size, page);
-    }*/
+    public static void flightList() {
+        List<Flight> flights = Flight.findAll();
+        render(flights);
+    }    
+
+    // Returns the info for selected flight
+    public static void editFlight(Long id) {
+        Flight flight = Flight.findById(id);
+        render(flight);
+    }
+
+    // Modify and update the schedule
+    public static void updateFlight(Long id, @Valid Flight flight) {
+        if(validation.hasErrors()) {
+            render("@editFlight", flight);
+        }
+
+        // Play will match HTTP parameters: flight.id and save within the object
+        flight.id = id;
+        flight.save();
+        flash.success("Successfully rescheduled flight no " + flight.flight_no);
+        flightList();
+    }
+
+    // Delete the selected flight
+    // Action not found in route
+    public static void cancelFlight(Long id) {
+        System.out.println(id);
+        Flight flight = Flight.findById(id);
+        flight.delete();
+        flash.success("Flight %s was successfully cancelled", flight.id);
+        admin();
+    }    
     
 }
 

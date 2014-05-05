@@ -10,7 +10,7 @@ import java.util.*;
 public class Flight extends Model {
     
     @Required
-    @MaxSize(10)
+    @Match(value="\\w{2}\\d{3,4}", message="Not a valid flight no")
     public String flight_no;
 
     @Required
@@ -19,11 +19,11 @@ public class Flight extends Model {
     public String airline;
     
     @Required
-    @MaxSize(10)
+    @Match(value="\\w{3}", message="Not a valid airport")
     public String dep_city;
 
     @Required
-    @MaxSize(10)
+    @Match(value="\\w{3}", message="Not a valid airport")
     public String arrv_city;
     
     // TemporalType.DATE: Map as java.sql.Date
@@ -36,22 +36,24 @@ public class Flight extends Model {
     @Temporal(TemporalType.DATE)
     public Date arrv_date;
 
-
-   /*java.util DATE, TIME*/
-
     @Required
+    @Match(value="^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", message="Not a valid time")
     public String dep_time;
 
     @Required
+    @Match(value="^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$", message="Not a valid time")
     public String arrv_time;
+
+    @Required
+    @Match(value="\\d{1,3}", message="Not a valid number for seats")
+    public Integer seats;
     
-    
+    @Required
     @Column(precision=6, scale=2)
     public BigDecimal price;
 
     public String toString() {
         return "Flight(" + flight_no + "," + airline + "," + dep_city + ","
          + arrv_city + "," + dep_date + "," + arrv_date + "," + price + ")";
-    }
-    
+    }    
 }

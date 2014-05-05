@@ -2,17 +2,28 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+# Login page
 GET     /                                       Application.index
-GET     /flights                                flights.index
-GET     /flights/list                           flights.list
-GET     /flights/{id}                           flights.show
-GET     /flights/{id}/booking                   flights.book
-POST    /flights/{id}/booking                   flights.confirmBooking
-DELETE  /bookings/{id}                          flights.cancelBooking
+
+# Admin page
+GET		/admin									Flights.admin
+POST    /newFlight	                      		Flights.newFlight
+GET		/flightList								Flights.flightList
+GET		/editFlight/{id}						Flights.editFlight
+POST    /flights/{id}		                    Flights.updateFlight
+DELETE	/flights/{id}							Flights.cancelFlight
+
+# User page
+GET     /flights                                Flights.index
+GET     /flights/list                           Flights.list
+GET     /flights/{id}                           Flights.show
+GET     /flights/{id}/booking                   Flights.book
+POST    /flights/{id}/booking                   Flights.confirmBooking
+DELETE  /bookings/{id}                          Flights.cancelBooking
 GET     /register                               Application.register
 POST    /register                               Application.saveUser
-GET     /settings                               flights.settings
-POST    /settings                               flights.saveSettings
+GET     /settings                               Flights.settings
+POST    /settings                               Flights.saveSettings
 POST    /login                                  Application.login
 GET     /logout                                 Application.logout
 

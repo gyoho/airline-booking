@@ -1,0 +1,100 @@
+#{extends 'main.html' /}
+#{set title:'Edit' /}
+#{set 'moreScripts'}
+    <script src="@{'/public/javascripts/jquery-ui-1.7.2.custom.min.js'}" type="text/javascript" charset="utf-8"></script>
+#{/set}
+#{set 'moreStyles'}
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/ui-lightness/jquery-ui-1.7.2.custom.css'}" />
+#{/set}
+
+
+<h1>Update flight Schedule</h1>
+
+#{form @updateFlight(flight.id)}
+    #{field 'flight.id'}
+        <p class="${field.errorClass}">
+            <strong>Flight ID:</strong> <input type="text" name="${field.name}" size="16" value="${flight?.id}" readonly>
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'flight.flight_no'}
+        <p class="${field.errorClass}">
+            <strong>Flight No:</strong> <input type="text" name="${field.name}" size="16" value="${flight?.flight_no}">
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'flight.airline'}
+        <p class="${field.errorClass}">
+            <strong>Airline:</strong> <input type="text" name="${field.name}" size="16" value="${flight?.airline}">
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'flight.dep_city'}
+        <p class="${field.errorClass}">
+            <strong>Departure City:</strong> <input type="text" name="${field.name}" size="16" value="${flight?.dep_city}">
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'flight.arrv_city'}
+        <p class="${field.errorClass}">
+            <strong>Arrival City:</strong> <input type="text" name="${field.name}" size="16" value="${flight?.arrv_city}">
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'flight.dep_date'}
+        <p class="${field.errorClass}">
+            <strong>Departure Date:</strong> <input type="text" name="${field.name}" class="datepicker" size="16"  value="${flight?.dep_date?.format('yyyy-MM-dd')}">
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'flight.arrv_date'}
+        <p class="${field.errorClass}">
+            <strong>Arrival Date:</strong> <input type="text" name="${field.name}" class="datepicker" size="16" value="${flight?.arrv_date?.format('yyyy-MM-dd')}">
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'flight.dep_time'}
+        <p class="${field.errorClass}">
+            <strong>Departure Time:</strong> <input type="text" name="${field.name}" size="16" value="${flight?.dep_time}">
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'flight.arrv_time'}
+        <p class="${field.errorClass}">
+            <strong>Arrival Time:</strong> <input type="text" name="${field.name}" size="16" value="${flight?.arrv_time}">
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'flight.seats'}
+        <p class="${field.errorClass}">
+            <strong>Number of Seats:</strong> <input type="text" name="${field.name}" size="16" value="${flight?.seats}">
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+    #{field 'flight.price'}
+        <p class="${field.errorClass}">
+            <strong>Price:</strong> <input type="text" name="${field.name}" size="16" value="${flight?.price}">
+            <span class="error">${field.error}</span>
+        </p>
+    #{/field}
+
+    <p class="buttons">
+        <input type="submit" value="Update">    
+    </p>
+#{/form}   
+
+#{form @cancelFlight(flight.id)}
+    <p class="buttons">
+        <input type="submit" value="Cancel flight">    
+    </p>
+#{/form}
+
+<br>
+<a href="@{flightList()}">Go back</a>
+
+
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+    $(".datepicker").datepicker({dateFormat: 'yy-mm-dd'});
+  });
+</script>

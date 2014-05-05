@@ -25,6 +25,7 @@ models.Flight(h1):
     arrv_date:  2014-04-30
     dep_time:   04:30
     arrv_time:  05:00
+    seats:      120
 
 models.Flight(h2):
     price:      230
@@ -36,17 +37,19 @@ models.Flight(h2):
     arrv_date:  2014-04-30
     dep_time:   07:20
     arrv_time:  12:50
+    seats:      180
 
 models.Flight(h3):
     price:      850
     flight_no:  UA532
     airline:    United
-    dep_city:   HOU
+    dep_city:   SJC
     arrv_city:  MIA
     dep_date:   2014-04-30
     arrv_date:  2014-04-30
-    dep_time:   01:15
-    arrv_time:  18:50
+    dep_time:   10:15
+    arrv_time:  22:50
+    seats:      120
 
 models.Flight(h4):
     price:      340
@@ -58,6 +61,7 @@ models.Flight(h4):
     arrv_date:  2014-04-30
     dep_time:   11:50
     arrv_time:  15:50
+    seats:      100
 
 models.Flight(h5):
     price:      650
@@ -69,3 +73,4 @@ models.Flight(h5):
     arrv_date:  2014-04-30
     dep_time:   14:20
     arrv_time:  15:50
+    seats:      120

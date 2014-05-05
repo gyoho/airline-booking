@@ -35,11 +35,6 @@ public class Application extends Controller {
         if(connected() != null) {
             Flights.index();
         }
-        /*Check if he/she is admin, if so render admin page*/
-        // if(admin == true) {
-        //     Flights.admin.html.render()
-        // }
-
         render();
     }
     
@@ -66,7 +61,12 @@ public class Application extends Controller {
         if(user != null) {
             session.put("user", user.username);
             flash.success("Welcome, " + user.name);
-            Flights.index();         
+            /*If admin, render the admin page*/
+            if(user.admin == true) {
+                Flights.admin();
+            } else{
+                Flights.index();
+            }         
         }
         // If cannot find the user in db
         flash.put("username", username);

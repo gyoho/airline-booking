@@ -23,7 +23,7 @@ public class User extends Model {
     
     // real name with less constraints than username
     @Required
-    @MaxSize(100)
+    @MaxSize(20)
     public String name;
    
     public User(String name, String password, String username) {

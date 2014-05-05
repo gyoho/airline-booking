@@ -1,0 +1,53 @@
+#{extends 'main.html' /}
+#{set title:'Schedule' /}
+
+<!-- Admin can update flight schedule  -->
+<h1>Flight List</h1>
+
+#{if flights}
+   <table>
+       <thead>
+           <tr>
+               <th>Flight ID</th>
+               <th>Flight#</th>
+               <th>Airline</th>
+               <th>Departure City</th>
+               <th>Arrival City</th>
+               <th>Departure Date</th>
+               <th>Arrival Date</th>
+               <th>Number of Seats</th>
+               <th>Price</th>
+               <th>Action</th>
+           </tr>
+       </thead>
+       <tbody>
+           #{list flights, as:'flight'}
+               <tr>
+                   <td>${flight.id}</td>
+                   <td>${flight.flight_no}</td>
+                   <td>${flight.airline}</td>
+                   <td>${flight.dep_city}</td>
+                   <td>${flight.arrv_city}</td>
+                   <td>${flight.dep_date}, ${flight.dep_time}</td>
+                   <td>${flight.arrv_date}, ${flight.arrv_time}</td>
+                   <td>${flight.seats}</td>
+                   <td>$${flight.price}</td>
+                   <td>
+                        <a href="@{editFlight(flight.id)}">Edit</a>
+                   </td>
+               </tr>
+           #{/list}
+       </tbody>
+   </table>
+
+#{/if}
+
+#{else}
+    <p>
+        No Scheduled Flight Found
+    </p>
+#{/else}
+
+<br>
+<br>
+    <a href="@{admin()}">Go back</a>

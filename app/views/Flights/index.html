@@ -1,16 +1,30 @@
 #{extends 'main.html' /}
 #{set title:'Search' /}
+#{set 'moreScripts'}
+    <script src="@{'/public/javascripts/jquery-ui-1.7.2.custom.min.js'}" type="text/javascript" charset="utf-8"></script>
+#{/set}
+#{set 'moreStyles'}
+    <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/ui-lightness/jquery-ui-1.7.2.custom.css'}" />
+#{/set}
+
 
 <h1>Search Flights</h1>
 
-<p>
-    <label>From:</label>
+<div>
+    <label for="dep_city">From:</label>
     <input type="text" id="dep_city" size="10">
-    <label>To:</label>
+</div>
+<span>
+    <label for="arrv_city">To:</label>
     <input type="text" id="arrv_city" size="10">
-    <label>Departure Date:</label>
-    <input type="text" size="10" id="dep_date" class="datepicker">
+</span>
+<div>
+    <label for="dep_date">Departure Date:</label>
+    <input type="text" size="10" id="dep_date" class="datepicker" value="${flight?.dep_date?.format('yyyy-MM-dd')}">
+</div>
+<div>
     <input type="submit" id="submit" value="Find Flights">
+</div>
 
     <br>
 
